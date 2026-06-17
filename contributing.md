@@ -5,7 +5,7 @@
 Several external tools are used in order to properly format the code. Install them with:
 
 ```bash
-pip install -r requirements-tests.txt
+python -m pip install -e ".[dev,docs,tests]"
 ```
 
 ## Black

@@ -1,20 +1,71 @@
-[tool.black]
-line-length = 150
-target-version = ['py37']
-
-[tool.isort]
-multi_line_output = 3
-include_trailing_comma = true
-force_grid_wrap = 0
-use_parentheses = true
-line_length = 150
-known_third_party = ['sklearn', 'ignite', 'pygsp']
-
 [build-system]
-build-backend = 'setuptools.build_meta'
-requires = [
-    "setuptools >= 40.0.4",
-    "setuptools_scm >= 2.0.0, <4",
-    "wheel >= 0.29.0",
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "deepsphere"
+version = "0.2.1"
+description = "DeepSphere package"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE.txt"}
+authors = [
+    {name = "Arcanite", email = "contact@arcanite.ch"},
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "numpy>=1.23",
+    "scikit-learn>=1.1",
+    "scipy>=1.9",
+    "tensorboard>=2.10",
+    "torch>=2.0",
+    "torchvision>=0.15",
+    "pyyaml>=6.0",
+    "pillow>=9.0",
+    "pygsp>=0.5.1",
 ]
 
+[project.optional-dependencies]
+dev = [
+    "black>=24.0",
+    "isort>=5.12",
+    "pre-commit>=3.5",
+    "pylint>=3.0",
+    "pylint-fail-under>=0.3.0",
+]
+docs = [
+    "Sphinx>=7.0",
+    "sphinx-rtd-theme>=2.0",
+]
+notebooks = [
+    "jupyter>=1.0",
+]
+tests = [
+    "pytest>=8.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/deepsphere/deepsphere-pytorch"
+Repository = "https://github.com/deepsphere/deepsphere-pytorch"
+
+[tool.setuptools]
+packages = {find = {exclude = ["docs*", "scripts*", "images*"]}}
+
+[tool.black]
+line-length = 150
+target-version = ['py310']
+
+[tool.isort]
+profile = "black"
+line_length = 150
+known_third_party = ['sklearn', 'ignite', 'pygsp']
