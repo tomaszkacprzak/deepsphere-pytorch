@@ -49,22 +49,24 @@ The task is to learn how to infer the correct class for each pixel given the 16 
 
 ## Quick Start
 
-In order to reproduce the results obtained, it is necessary to install the PyGSP branch containing the graph processing for equiangular, icosahedron, and healpix samplings. In future versions, PyGSP will be in the requirements. Subsequently, please refer yourself to the [Pytorch Getting Started information page](https://pytorch.org/get-started/locally/) to run the correct `conda install` command corresponding to your operating system, python version and cuda version.
-Once those requirements are met, you can install the `deepsphere` package in your environment.
+DeepSphere now uses a `pyproject.toml`-based Python packaging configuration and supports Python 3.10 and newer. Runtime dependencies, including PyGSP and modern PyTorch/TorchVision releases, are installed through the project metadata.
 
-Our recommendation for a linux based machine is:
+A typical setup on a Linux based machine is:
 
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install git+https://github.com/deepsphere/deepsphere-pytorch
 ```
-conda create --name deepsphere python=3.7
 
-source activate deepsphere
+For local development from a checkout, install the package and its development/documentation extras with:
 
-pip install git+https://github.com/epfl-lts2/pygsp.git@39a0665f637191152605911cf209fc16a36e5ae9#egg=PyGSP
-
-conda install pytorch=1.3.1 torchvision=0.4.2 cudatoolkit=10.0 -c pytorch
-
-pip install git+https://github.com/deepsphere/deepsphere-pytorch
+```bash
+python -m pip install -e ".[dev,docs]"
 ```
+
+If you need a CUDA-enabled PyTorch build, please refer to the [PyTorch Getting Started information page](https://pytorch.org/get-started/locally/) for the install command corresponding to your operating system, Python version, and CUDA version before installing DeepSphere.
 
 The package offers the experiment parameters stored in a [Yaml config file](./scripts/config.example.yml), which can be used by running a [script](./scripts/run_ar_tc_ignite.py) from the command line.
 
